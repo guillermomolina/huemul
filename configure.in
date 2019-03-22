@@ -1,0 +1,13 @@
+AC_INIT(configure.in)
+
+AM_CONFIG_HEADER(config.h)
+AM_INIT_AUTOMAKE(huemul, 0.5)
+
+AC_LANG_C
+AC_PROG_CC
+AC_PROG_RANLIB
+AM_PROG_AS
+
+AM_PATH_GTK_2_0([2.6.0],,AC_MSG_ERROR([Gtk+ 2.6.0 or higher required.]))
+
+AC_OUTPUT(Makefile src/Makefile)

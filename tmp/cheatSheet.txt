@@ -1,0 +1,53 @@
+Smalltalk snapshotAndQuit
+
+ClassBrowser open
+
+Workspace open
+
+AppLauncher open
+
+
+writeBuffer: buffer size: size
+
+	^ LibC6 default write: self buffer: buffer size: size
+
+
+
+file := BinaryFileStream readOnlyFileNamed: 'file.txt' .
+[ file atEnd ] whileFalse: [ 
+	file next kernelDisplay.
+].
+file close.
+
+
+	file := BufferedFileStream readOnlyFileNamed: '/tmp/file1.bin' .
+	file2 := BufferedFileStream forceNewFileNamed: '/tmp/file2.bin' .
+[	[ file atEnd ] whileFalse: [ 
+		a := file next.
+		file2 nextPut: a.
+	].
+] timeToRun kernelDisplay.
+	file close.
+	file2 close.
+
+(send #47377) Error: Aqui
+Process -> #primitiveExecute
+Process -> #execute
+BlockClosure -> #forkAt:
+Gtk -> #startMainLoop
+Gtk -> #initialize
+Behavior -> #new
+Gtk -> #default
+Gtk -> #functionNamed:
+Gtk -> #primGtkWindowTypeGetType
+Gtk -> #windowType
+GtkWindow -> #new:
+GtkWindow -> #new
+PluggableGtkSimpleApplication -> #buildWindowTitle:
+PluggableGtkSimpleApplication -> #openTitle:
+PluggableGtkSimpleApplication -> #open
+Compiler -> #evaluate:in:to:notifying:ifFail:logged:
+Compiler -> #evaluate:in:to:notifying:ifFail:
+Shell -> #main
+Application -> #startUp
+A

@@ -1,0 +1,5 @@
+- Implement ClassBoxes
+- Unify use of external objects (Process, StandardFileStream, Gtk, Semaphores, etc)
+- Implement primitiveTimeSecondsClock.
+- Better editing support in Shell
+- Complete the Gtk wrapper

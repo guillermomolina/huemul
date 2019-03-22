@@ -1,0 +1,161 @@
+Version 0.8
+
+	Bug Fixes
+		- empty lines in CLI crahsed the Shell (27/06/2008)
+		- GTK process didn't start automatically and crashed GTK Apps (03/07/2008)
+		- Exception->receiver missing (03/07/2008)
+		- ExternalObjectProxy object uninitialized hangs, added lazy init (03/07/2008)
+
+Version 0.7
+	
+	First full standalone version
+	Added allocation of more core memory when there is not enough
+	Support for class removal
+	Reclassified some Classes
+	Added object become and its tests
+	Added SharedPool class
+	Easier ProcessScheduler->activeProcess (thanks Igor Stasenko)
+	SIGSEGV prints the stack and exits
+	Unified different performWithArgs methods
+	Changed method cache to one per thread leading to performance improvement
+	Mapped many libc6 functions
+	Added multi-line editing support and history in CLI.
+	Start changing FFI to have an easier and uniformed interface.
+	Bug Fixes:
+		- ThisEnvVar crashed the image while accessing a block
+		- getFirstInstanceOf() not returned nil if no instance
+		- ClassBrowser break SystemOrganization by sorting categories
+		- Transcript didn't nil external variable and crashed
+		- nextInstance returned the same instance instead of the next
+		- Compiled method created with sources niled
+		- ClassBuilder #reshapeClass:toSuper: send #becomeUncompact
+		- StandardFileStream used uninitialized Registry at #retryWithGC:until:forFileNamed:
+		- printCallStack() doesn't SIGSEGVs
+		- method cache hash mask
+		- recursive debugging error caused By SourceReference
+		- String asByteArray thrown primitiveFail
+
+Version 0.6
+
+	Remove atCache from the VM
+	Added the LowSpaceWatcher process
+	Changed the memory allocation mechanism from malloc/free to mmap
+	New saveImage mechanism
+	Changed stack size for threads to 512KB
+	Don't set max hard memory limit
+	Added CategorizerTest class
+	Bug Fixes:
+		- threading problem with atCache, segmentation fault
+		- atPut() with Variable Word Objects panics
+		- When gmalloc() returns NULL, VM crashes
+		- primitiveShellInput() deadlock
+		- ProcessScheduler suspendAllButActive didn't wait for all the processes to suspend
+		- SystemDictionary primBytesLeft returning incorrect values
+		- new object functions panics vm if interrupted while suspending
+		- Inconsistence in isKnownObject() and the saveArray
+		- Sigsegv in linux distributions that have noexec kernel option turned on
+		- Change default cr character
+
+Version 0.5b
+
+	Automatically executes a garbage collection when low space is signaled
+	VM Object allocation functions returns CObjectPointer instead of (STObject *)
+	New VM alloc function for ExternalAddresses
+	Process list generated in GC primitive
+	Implemented low level debug mechanism to show message sends
+	Move traitComposition instance variable from ClassDescription to Behavior
+	Bug Fixes:
+		- TranscriptStream cyclic buf in #pastEndPut:
+		- MaxObjects too big, optimized code failed to open AppLauncher
+		- #printOn:base: defined in SmallInteger causes FractionTest #testFractionPrinting to fail
+		- gmalloc overflows allocatedObjects[]
+		- newIntegerOrLong() must convert unsigned ints.
+		- ExternalAddress fromInteger: does not handle negatives
+		- uncheckedAtPut din't check values between 0 and 255 for variableByteObjects
+		- garbage collector flush at cache while being used
+		- mutex in findFunctionInMethodCache was slowing down send mechanism by a factor of 3
+
+Version 0.5a
+	
+	More portable handling of process resume and suspend in ST
+	Better handling of Gtk main loop process
+	FileDirectory uses libc's getcwd to set DefaultDirectory
+	Added Utilities class, and system properties getter/setter methods
+	Bug Fixes:
+		- garbage collector didn't flush at cache
+		- garbage collector didn't inspect active process stack
+		- GtkAboutDialog DNU getHandle
+		- ExternalStructure DNU setHandle
+		- ClassBrowser sometimes brings a GTK error when selecting a class
+		- Memory leak in checkAllMemory and saveArray
+		- Deadlock at gmalloc, when previous gmalloc returned with an error
+		- Behavior new new crashes the image
+
+Version 0.5
+
+	ClassBrowser funcionality, add/modify method
+	ClassBrowser funcionality, add/modify class
+	Clean up Process/ProcessScheduler, simplify interaction
+	Added first manual garbage collector
+	Added weak arrays and finalization support
+	Added first somInstance/nextInstance implementation
+	Added basic snapshotAndQuit support
+	Better external object support with auto finalization
+	Reorganize project directrories
+	Bug Fixes:
+		- GIRBuilder cacheMap
+		- Mismatch between object's size and class instSize in some classes
+		- Compiler inlining #at: and #at:put
+		- Fixed a bug in Makefile.am, now configure works without kdevelop
+
+Version 0.4
+
+	Fixed temp location in the stack frame
+	Fixed thisEnv var location in the stack frame
+	Debugger inspects args, temps (both local and captured) and receivers correctly	
+	Added temp initialization by pushing nil oop, will change this in the future
+	Synced compiler changes with original sources developed in Squeak
+	Unify tools behavior by using pluggable views
+	Added Quit option to File Menu in AppLauncher
+	Bug Fixes:
+		- Buggy class creation mechanism (ClassBuilder)
+	
+
+Version 0.3
+
+	Added dynamic Traits
+	Added a GTK wrapper (incomplete)
+	Make Gtk wrapper thread safe
+	Added UNIX pthreads support
+	Added dynamic library mapping 
+	Changed File IO classes to support dynamic libraries
+	Added a Transcript stream
+	Created GUI Tools: a workspace, a transcript, a class browser and the application launcher
+	Created basic Debugger
+	Added debug info to compiled methods (CompiledMethod and InstructionSequence)
+	Make UnhandledError open the debugger
+	Added ChangeSet mechanisms
+	Added Context (PseudoContext) materialization from stack, debugger support
+	Bug Fixes:
+		- Unwind mechanism doesn't remove FramePointers, Exceptions or Ensures from exception handler list
+		- ClassBrowser hangs selecting class metohds
+
+
+Version 0.2
+
+	Rename project to Huemul
+	Separate image from executable
+	Create SVN repository (http://www.guillermomolina.com.ar/repos/huemul/)
+	Added fileIn/fileOut support
+	Bug Fixes
+
+Version 0.1
+
+	Initial executable
+	Basic file support
+	Added SystemTracer
+	Support to create image files
+	Use exupery as compiler
+	Use SmaCC as translator
+	0 taggedIntegers support (thanks Klaus D. Witzel)
+	Bug Fixes

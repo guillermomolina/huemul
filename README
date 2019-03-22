@@ -1,0 +1,14 @@
+Huemul is a new Smalltalk implementation
+
+Contents:
+huemul	-	linux executable
+LICENSE	-	license file
+README	-	this file
+
+
+How to use it:
+Execute huemul.
+huemul imageFile.image
+
+Inside it you will find a ">" prompt. 
+Write normal Smalltalk code, every time you press Enter, the line is evaluated, printing the result.
